@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/banner.webp" alt="古诗文读本横幅，范宽《溪山行旅图》" width="100%">
+  <img src="docs/images/banner-v2.webp" alt="古诗文读本横幅，范宽《溪山行旅图》" width="100%">
 </p>
 
 <h1 align="center">古诗文读本</h1>
