@@ -1,0 +1,11 @@
+{
+  "name": "gushiwen-reader",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "广东中考初中必背古诗文逐字逐词解读读本",
+  "scripts": {
+    "start": "node scripts/serve.mjs"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="moye" data-pinyin="hard" data-type="2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>古诗文读本 · 广东中考必背篇目逐字逐词完全解读</title>
+<meta name="description" content="初中必背古诗词与文言文完全解读，依据义务教育语文课程标准（2022年版）7~9年级推荐篇目并补齐广东卷考查的教材篇目。逐字逐词点击释义、疑难字注音、整句点击看译文、全文翻译与整体理解、背诵默写、考点辨误。大字号自适应，适合网页、平板与讲台投屏。">
+<meta name="theme-color" content="#111917">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23b2402c'/%3E%3Ctext x='16' y='23' font-size='19' font-family='KaiTi,STKaiti,serif' fill='%23f7efe2' text-anchor='middle'%3E读%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/curation.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="lamp" aria-hidden="true"></div>
+
+<header class="chrome" id="chrome">
+  <a class="brand" href="#/" aria-label="古诗文读本，返回目录">
+    <span class="seal" aria-hidden="true">读</span>
+    <span class="brand-txt">
+      <b>古诗文读本</b>
+      <i>广东中考必背 · 逐字逐词完全解读</i>
+    </span>
+  </a>
+
+  <nav class="chrome-tools" aria-label="阅读设置">
+    <a class="tool tool-link" href="#/" id="btn-catalog">目录</a>
+
+    <div class="seg" role="group" aria-label="拼音显示">
+      <span class="seg-label" aria-hidden="true">拼音</span>
+      <button type="button" data-pinyin="off" aria-pressed="false">关</button>
+      <button type="button" data-pinyin="hard" aria-pressed="true">难字</button>
+      <button type="button" data-pinyin="all" aria-pressed="false">全部</button>
+    </div>
+
+    <div class="seg seg-type" role="group" aria-label="正文字号">
+      <span class="seg-label" aria-hidden="true">字号</span>
+      <button type="button" id="type-down" aria-label="减小字号">A−</button>
+      <output id="type-out" aria-live="polite">标准</output>
+      <button type="button" id="type-up" aria-label="增大字号">A+</button>
+    </div>
+
+    <div class="seg seg-theme" role="group" aria-label="视觉主题">
+      <button type="button" data-theme-set="moye" aria-pressed="true">墨夜</button>
+      <button type="button" data-theme-set="xuanzhi" aria-pressed="false">宣纸</button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section id="view-catalog" class="view exhibition">
+    <header class="catalog-hero">
+      <div class="hero-copy">
+        <p class="kicker"><span>广东中考读本</span><i></i>统编教材 · 2022 年课标</p>
+        <h1>初中必背<br>古诗文<span class="title-dot">。</span></h1>
+        <div class="hero-deck">
+          <b>逐字逐词，读懂一篇。</b>
+          <p>疑难字注音，字词随点随查；整句附译文，全文有翻译与理解。每一篇独占一页，字号可以放大，适合自学、课堂和讲台投屏。</p>
+        </div>
+        <div class="hero-rule"><span>诗</span><span>词</span><span>曲</span><span>文</span><i></i><small>按教材顺序编目</small></div>
+      </div>
+      <figure class="hero-art">
+        <img src="assets/images/wang-ximeng.webp" alt="北宋王希孟《千里江山图》局部" width="3840" height="154" fetchpriority="high">
+        <figcaption><span>宋人山水</span><b>千里江山图</b><small>王希孟 · 北宋 · 绢本设色</small></figcaption>
+        <span class="art-stamp" aria-hidden="true">山<br>水</span>
+      </figure>
+    </header>
+
+    <div class="searchbar" role="search">
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
+        <input type="search" id="q" placeholder="搜篇名、作者、朝代，或任意一句诗文" autocomplete="off" aria-label="搜索篇目">
+        <button type="button" id="q-clear" hidden aria-label="清空搜索">×</button>
+      </label>
+      <p class="search-hint" id="search-hint">试试：曹操 / 月 / 先天下之忧而忧 / 岳阳楼</p>
+    </div>
+
+    <div class="filters" id="filters">
+      <div class="filter-row" data-filter="grade" role="group" aria-label="按年级筛选">
+        <span class="filter-name">年级</span>
+        <button type="button" data-val="" aria-pressed="true">全部</button>
+        <button type="button" data-val="七上" aria-pressed="false">七上</button>
+        <button type="button" data-val="七下" aria-pressed="false">七下</button>
+        <button type="button" data-val="八上" aria-pressed="false">八上</button>
+        <button type="button" data-val="八下" aria-pressed="false">八下</button>
+        <button type="button" data-val="九上" aria-pressed="false">九上</button>
+        <button type="button" data-val="九下" aria-pressed="false">九下</button>
+      </div>
+      <div class="filter-row" data-filter="genre" role="group" aria-label="按体裁筛选">
+        <span class="filter-name">体裁</span>
+        <button type="button" data-val="" aria-pressed="true">全部</button>
+        <button type="button" data-val="诗" aria-pressed="false">诗</button>
+        <button type="button" data-val="词" aria-pressed="false">词</button>
+        <button type="button" data-val="曲" aria-pressed="false">曲</button>
+        <button type="button" data-val="文" aria-pressed="false">文</button>
+      </div>
+      <div class="filter-row" data-filter="syllabus" role="group" aria-label="按篇目来源筛选">
+        <span class="filter-name">来源</span>
+        <button type="button" data-val="" aria-pressed="true">全部</button>
+        <button type="button" data-val="课标" aria-pressed="false">课标推荐</button>
+        <button type="button" data-val="教材" aria-pressed="false">教材增补</button>
+        <button type="button" data-val="exam" aria-pressed="false">广东卷考过</button>
+      </div>
+    </div>
+
+    <div class="catalog-index-head">
+      <h2>篇目索引</h2>
+      <span>按年级编排 · 点篇名进入整页解读</span>
+    </div>
+    <p class="result-line" id="result-line" aria-live="polite"></p>
+    <div id="catalog-body"></div>
+    <div class="empty" id="catalog-empty" hidden>
+      <p>没有匹配的篇目。</p>
+      <button type="button" class="btn" id="reset-filters">清空搜索与筛选</button>
+    </div>
+  </section>
+
+  <section id="view-piece" class="view" hidden></section>
+
+</main>
+
+<footer class="foot">
+  <p>篇目依据《义务教育语文课程标准（2022年版）》附录优秀诗文背诵推荐篇目（7~9年级），并补齐统编教材必背与广东卷考查过的课外诵读篇目。原文以统编教材为底本，释义与译文供教学参考。</p>
+  <p class="foot-art">画作均为公有领域作品，图片经本地压缩与裁切。来源：<a href="https://commons.wikimedia.org/wiki/File:Fan_Kuan_-_Travelers_Among_Mountains_and_Streams_-_Google_Art_Project.jpg" target="_blank" rel="noreferrer">范宽《溪山行旅图》</a>、<a href="https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg" target="_blank" rel="noreferrer">郭熙《早春图》</a>、<a href="https://commons.wikimedia.org/wiki/File:Wang_Ximeng._A_Thousand_Li_of_Rivers_and_Mountains._(Complete,_51,3x1191,5_cm)._1113._Palace_museum,_Beijing.jpg" target="_blank" rel="noreferrer">王希孟《千里江山图》</a>。</p>
+  <p class="foot-sign">古诗文读本 · Yardon</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <symbol id="mark-ink" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".35"/>
+      <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-width="2.4" opacity=".7"/>
+      <path d="M100 38v124M38 100h124" stroke="currentColor" stroke-width="1" opacity=".22"/>
+      <text x="100" y="126" font-size="72" text-anchor="middle" fill="currentColor" font-family="KaiTi,STKaiti,SimSun,serif">读</text>
+    </symbol>
+  </defs>
+</svg>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
