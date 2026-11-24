@@ -2,9 +2,10 @@
   <img src="docs/images/banner.webp" alt="古诗文读本横幅，范宽《溪山行旅图》" width="100%">
 </p>
 
-<h1 align="center">古诗文读本</h1>
+<h1 id="zh" align="center">古诗文读本</h1>
 
 <p align="center">
+  <a href="#zh">中文</a> · <a href="#en">English</a><br>
   广东中考 · 初中必背古诗文 · 逐字逐词完全解读<br>
   <a href="https://gushiwen-reader-x7alhjqexlp.qoder.zone">公网预览</a>
   ·
@@ -153,14 +154,180 @@ PORT=8080 npm start
 - 设置保存在浏览器 `localStorage`，不需要账号或后端。
 - 支持减少动态效果的系统偏好与打印样式。
 
-## 版权说明
+## 开发方式
+
+本项目由 Qoder AI Coding 助手协作完成，涵盖篇目资料整理、内容编写、前端实现、静态校验与浏览器回归。项目本身不调用 AI 服务，不需要模型、API Key 或后端；使用者直接读取仓库中的诗文数据和解读内容。
+
+---
+
+<h1 id="en" align="center">Classical Chinese Reader</h1>
+
+<p align="center">
+  <a href="#zh">中文</a> · English<br>
+  Guangdong Zhongkao · Junior High Required Reading · Word-by-Word Notes<br>
+  <a href="https://gushiwen-reader-x7alhjqexlp.qoder.zone">Live Preview</a>
+  ·
+  <a href="https://github.com/YardonYan/gushiwen-reader">GitHub Repository</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML-CSS-JavaScript-111917?style=flat-square" alt="HTML CSS JavaScript">
+  <img src="https://img.shields.io/badge/Works-105-bd5842?style=flat-square" alt="105 works">
+  <img src="https://img.shields.io/badge/License-MIT-356c5e?style=flat-square" alt="MIT License">
+</p>
+
+A classical Chinese reading companion for students, teachers, and classroom projection. Every work has its own page. Readers can click individual characters and words for pinyin and explanations, expand sentences for translations and analysis, and study the complete translation, overall interpretation, and exam notes.
+
+## Interface Preview
+
+| Catalog | Work Reader |
+| :---: | :---: |
+| <img src="docs/images/catalog-desktop.webp" alt="Classical Chinese Reader catalog" width="100%"> | <img src="docs/images/reader-desktop.webp" alt="Viewing the Sea reader page" width="100%"> |
+
+| Mobile Catalog | Mobile Reader |
+| :---: | :---: |
+| <img src="docs/images/catalog-mobile.webp" alt="Mobile catalog" width="100%"> | <img src="docs/images/reader-mobile.webp" alt="Mobile reader" width="100%"> |
+
+## Background
+
+The project started with three everyday study problems: required reading is scattered across sources, difficult characters often lack pinyin, and translations can be hard to match back to the original text. This reader brings together the recommended Grade 7–9 texts from the 2022 compulsory education Chinese curriculum standards, unified textbook works, and recorded Guangdong examination questions in one catalog, organized by grade and genre.
+
+The collection currently contains **105 works**: 56 poems, 18 ci lyrics, 4 qu pieces, and 27 prose works.
+
+| Category | Count | Description |
+| :--- | ---: | :--- |
+| Curriculum-recommended | 62 | Recommended Grade 7–9 works from the 2022 curriculum standards |
+| Textbook additions | 43 | Additional works required by the unified Chinese textbooks |
+| Appeared in Guangdong exams | 18 | Actual year and question type, overlapping the categories above |
+
+“Appeared in Guangdong exams” is not an estimated frequency. Each label comes from a recorded examination year and question type, such as “2025 comprehension dictation” or “2023 contextual dictation.”
+
+## Features
+
+- **Character and word notes**: Click a character or word in the original text to see pinyin, meaning, detailed explanation, and common mistakes.
+- **Sentence explanations**: Click a sentence number to expand its meaning, translation, and appreciation notes.
+- **Complete translation and interpretation**: Move from individual words to the full passage for independent study or lesson preparation.
+- **Dictation practice**: Hide hints, enter answers blank by blank, review mistakes, reveal answers, reset, and earn a completion stamp.
+- **Full-text search**: Search by title, author, dynasty, or any line of poetry or prose.
+- **Combined filters**: Filter by grade, genre, curriculum recommendation, textbook addition, and Guangdong examination record.
+- **Reading preferences**: Three pinyin modes, five type sizes, and independently designed dark and paper themes, saved locally.
+- **Classroom projection**: Adaptive large text keeps the original work and explanations readable without a separate projection mode.
+- **Responsive layout**: No horizontal overflow from 320–1440px, with primary controls kept at least 44×44px.
+
+## Reading Example
+
+Click “碣石” in *Viewing the Sea* (《观沧海》) to see the pronunciation `jié shí`, the meaning of the place name, character notes, and the historical background of Cao Cao’s northern campaign against the Wuhuan.
+
+<p align="center">
+  <img src="docs/images/word-detail.webp" alt="Clicking 碣石 to display pinyin, meaning, and detailed notes" width="430">
+</p>
+
+Sentence numbers expand the explanation. For example, “树木丛生，百草丰茂” is explained as luxuriant trees and grass on the island, with notes connecting the autumn landscape to the poet’s vigorous mood.
+
+## Visual Design
+
+The visual direction combines a Song-dynasty landscape scroll with museum exhibit labels:
+
+- The catalog is a grade-based exhibit index rather than a wall of equally weighted cards.
+- Each reader page uses a landscape, title, author, and original text as its exhibit label.
+- The dark theme suggests a night gallery and old-book reading.
+- The paper theme suggests a daytime gallery and a paper scroll.
+- The two themes have separate palettes, typography, borders, and image treatments rather than simple color swaps.
+
+The artwork includes *Travelers Among Mountains and Streams* by Fan Kuan, *Early Spring* by Guo Xi, and *A Thousand Li of Rivers and Mountains* by Wang Ximeng. All are public-domain works, stored locally as compressed WebP images without an external image service.
+
+## Run Locally
+
+Node.js 18 or later is required. There are no third-party dependencies and no package installation step.
+
+```bash
+git clone https://github.com/YardonYan/gushiwen-reader.git
+cd gushiwen-reader
+npm start
+```
+
+Open the address printed by the server. The default is:
+
+```text
+http://127.0.0.1:4173
+```
+
+To use another port:
+
+```bash
+PORT=8080 npm start
+```
+
+## Static Deployment
+
+The `web/` directory is the complete static site. It can be deployed directly to GitHub Pages, Netlify, Vercel, Cloudflare Pages, or any static server.
+
+- Entry file: `web/index.html`
+- Hash routing requires no SPA rewrite rules.
+- All runtime styles, scripts, text data, and images are inside `web/`.
+- The footer only links to artwork sources; it does not request an external API.
+
+## Project Structure
+
+```text
+.
+├─ web/
+│  ├─ index.html
+│  ├─ assets/
+│  │  ├─ css/
+│  │  │  ├─ site.css
+│  │  │  └─ curation.css
+│  │  ├─ js/
+│  │  │  ├─ app.js
+│  │  │  ├─ reader.js
+│  │  │  ├─ dictation.js
+│  │  │  └─ motif.js
+│  │  └─ images/
+│  └─ data/
+│     ├─ catalog.json
+│     ├─ source.json
+│     └─ pieces/
+├─ docs/
+│  └─ images/
+├─ scripts/
+│  └─ serve.mjs
+├─ LICENSE
+├─ package.json
+└─ README.md
+```
+
+## Data Notes
+
+- `catalog.json`: Catalog metadata, grades, genres, source classifications, and Guangdong examination records.
+- `source.json`: Source texts used for full-text search and integrity checks.
+- `pieces/<id>.json`: Author biography, background, word notes, sentence translations, complete translation, overall interpretation, and exam points for each work.
+
+Every piece follows a strict text-integrity rule: concatenate all `lines[].t[].w` values in order, remove whitespace, and the result must exactly match the corresponding text in `source.json`, including punctuation. All 105 works pass this check.
+
+## Technical Details
+
+- Native HTML, CSS, and ES Modules; no framework or build step.
+- Hash routes: `#/` for the catalog and `#/p/<id>` for an individual work.
+- Version checks prevent stale asynchronous search or route responses from replacing newer results.
+- Preferences are stored in browser `localStorage`; no account or backend is required.
+- Reduced-motion preferences and print styles are supported.
+
+## AI-Assisted Development
+
+The project was developed with the Qoder AI Coding assistant, including source organization, content drafting, frontend implementation, static validation, and browser regression testing. The published reader itself does not call an AI service and requires no model, API key, or backend: visitors read the text data and explanations stored in the repository.
+
+---
+
+## 版权说明 / Copyright
 
 本项目中的诗歌、文言文原文、教材编排及相关内容并非本项目作者所有，相关权利归原作者或相应权利人所有。作者仅出于学习和交流态度制作本站，内容仅供学习及教师课程讲解、投影演示使用，不主张内容版权。
 
-仓库中的原创代码、README 与视觉编排采用 [MIT License](LICENSE)。古诗文原文与公有领域画作不因该许可证产生新的权利主张。
+The poetry, prose, textbook arrangements, and related content in this project are not owned by the project author. Relevant rights belong to the original authors or other rightsholders. The author created this site solely for learning and exchange. The content is intended for study, classroom explanation by teachers, and projection demonstrations; no copyright is claimed over the content.
 
-画作来源：
+The repository’s original code, README, and visual arrangement use the [MIT License](LICENSE). The classical texts and public-domain paintings do not acquire new rights claims through this license.
 
-- [范宽《溪山行旅图》](https://commons.wikimedia.org/wiki/File:Fan_Kuan_-_Travelers_Among_Mountains_and_Streams_-_Google_Art_Project.jpg)
-- [郭熙《早春图》](https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg)
-- [王希孟《千里江山图》](https://commons.wikimedia.org/wiki/File:Wang_Ximeng._A_Thousand_Li_of_Rivers_and_Mountains._(Complete,_51,3x1191,5_cm)._1113._Palace_museum,_Beijing.jpg)
+画作来源 / Artwork sources:
+
+- [范宽《溪山行旅图》 / Fan Kuan, Travelers Among Mountains and Streams](https://commons.wikimedia.org/wiki/File:Fan_Kuan_-_Travelers_Among_Mountains_and_Streams_-_Google_Art_Project.jpg)
+- [郭熙《早春图》 / Guo Xi, Early Spring](https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg)
+- [王希孟《千里江山图》 / Wang Ximeng, A Thousand Li of Rivers and Mountains](https://commons.wikimedia.org/wiki/File:Wang_Ximeng._A_Thousand_Li_of_Rivers_and_Mountains._(Complete,_51,3x1191,5_cm)._1113._Palace_museum,_Beijing.jpg)
