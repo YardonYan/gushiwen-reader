@@ -1,5 +1,3 @@
-<a id="zh"></a>
-
 <p align="center">
   <img src="docs/images/banner.webp" alt="古诗文读本横幅，范宽《溪山行旅图》" width="100%">
 </p>
@@ -7,7 +5,7 @@
 <h1 align="center">古诗文读本</h1>
 
 <p align="center">
-  <a href="https://github.com/YardonYan/gushiwen-reader#user-content-zh">中文</a> · <a href="https://github.com/YardonYan/gushiwen-reader#user-content-en">English</a><br>
+  <a href="#古诗文读本">中文</a> · <a href="#classical-chinese-reader">English</a><br>
   广东中考 · 初中必背古诗文 · 逐字逐词完全解读<br>
   <a href="https://gushiwen-reader-x7alhjqexlp.qoder.zone">公网预览</a>
   ·
@@ -162,12 +160,10 @@ PORT=8080 npm start
 
 ---
 
-<a id="en"></a>
-
 <h1 align="center">Classical Chinese Reader</h1>
 
 <p align="center">
-  <a href="https://github.com/YardonYan/gushiwen-reader#user-content-zh">中文</a> · English<br>
+  <a href="#古诗文读本">中文</a> · English<br>
   Guangdong Zhongkao · Junior High Required Reading · Word-by-Word Notes<br>
   <a href="https://gushiwen-reader-x7alhjqexlp.qoder.zone">Live Preview</a>
   ·
