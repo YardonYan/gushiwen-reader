@@ -20,7 +20,7 @@ const TYPE_LABEL = ['小', '稍小', '标准', '大', '特大'];
 
 /* ---------- 抬头控件 ---------- */
 function applyPrefs() {
-  const theme = store.get('theme', 'moye');
+  const theme = store.get('theme', 'xuanzhi');
   const py = store.get('pinyin', 'hard');
   const ty = store.get('type', 2);
   setTheme(theme, false);
@@ -31,10 +31,8 @@ function setTheme(v, save = true) {
   document.documentElement.dataset.theme = v;
   $$('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === v)));
   const meta = $('meta[name="theme-color"]');
-  if (meta) meta.content = v === 'xuanzhi' ? '#e9e1cf' : '#111917';
+  if (meta) meta.content = v === 'xuanzhi' ? '#f4f0e6' : '#101614';
   if (save) store.set('theme', v);
-  const band = $('.motif-band');
-  if (band) { band.classList.remove('sweep'); void band.offsetWidth; band.classList.add('sweep'); }
 }
 function setPinyin(v, save = true) {
   document.documentElement.dataset.pinyin = v;
@@ -198,11 +196,7 @@ async function renderCatalog() {
       .map(([g, items]) => `<section class="grade-group">
         <header class="grade-head"><h2>${esc(g)}</h2><p>${esc(gradeNote[g] || '')}</p><span>${items.length} 篇</span></header>
         <div class="cards index-list">${items.map(x => cardHTML(x.p, '', '')).join('')}</div>
-      </section>${g === '七下' ? `<aside class="gallery-interlude" aria-label="宋人山水画">
-        <figure><img src="assets/images/fan-kuan.webp" alt="北宋范宽《溪山行旅图》" width="1200" height="2400" loading="lazy"><figcaption><b>溪山行旅图</b><span>范宽 · 北宋</span></figcaption></figure>
-        <blockquote><p>读诗如看山。<br>从一字一句，到全篇气象。</p><cite>山水之间，字句有路</cite></blockquote>
-        <figure><img src="assets/images/guo-xi.webp" alt="北宋郭熙《早春图》" width="1200" height="1745" loading="lazy"><figcaption><b>早春图</b><span>郭熙 · 北宋</span></figcaption></figure>
-      </aside>` : ''}`).join('');
+      </section>`).join('');
   }
 }
 
@@ -308,13 +302,26 @@ function bind() {
     });
   });
 
+  const settings = $('#read-settings');
+  if (settings) {
+    const closeSettings = () => { settings.open = false; };
+    settings.addEventListener('toggle', () => {
+      $('.settings-trigger', settings)?.setAttribute('aria-label', settings.open ? '关闭阅读设置' : '打开阅读设置');
+    });
+    document.addEventListener('click', e => {
+      if (settings.open && !settings.contains(e.target)) closeSettings();
+    });
+  }
+
   window.addEventListener('hashchange', route);
 
   document.addEventListener('keydown', e => {
     if (e.key === '/' && state.route.name === 'catalog' && document.activeElement !== q) {
       e.preventDefault(); q.focus(); q.select();
     }
-    if (e.key === 'Escape' && state.route.name === 'piece') {
+    if (e.key === 'Escape') {
+      settings?.removeAttribute('open');
+      if (state.route.name !== 'piece') return;
       $$('.gloss.open').forEach(g => {
         g.classList.remove('open');
         g.previousElementSibling?.querySelector('.verse-no')?.setAttribute('aria-expanded', 'false');
@@ -324,17 +331,23 @@ function bind() {
           $('.tok-bloom', t)?.remove();
         });
       });
+      const expand = $('.piece [data-act="expand-all"]');
+      if (expand) {
+        expand.setAttribute('aria-pressed', 'false');
+        expand.textContent = '展开全部句解';
+      }
     }
   });
 
-  // 意象横幅的指针光斑
-  document.addEventListener('pointermove', e => {
-    const band = e.target.closest?.('.motif-band');
-    if (!band) return;
-    const r = band.getBoundingClientRect();
-    band.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
-    band.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
-  }, { passive: true });
+  let printDetails = [];
+  window.addEventListener('beforeprint', () => {
+    printDetails = $$('.author-panel:not([open])');
+    printDetails.forEach(d => { d.open = true; });
+  });
+  window.addEventListener('afterprint', () => {
+    printDetails.forEach(d => { d.open = false; });
+    printDetails = [];
+  });
 }
 
 /* ---------- 启动 ---------- */

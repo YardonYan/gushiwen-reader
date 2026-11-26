@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="moye" data-pinyin="hard" data-type="2">
+<html lang="zh-CN" data-theme="xuanzhi" data-pinyin="hard" data-type="2">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>古诗文读本 · 广东中考必背篇目逐字逐词完全解读</title>
 <meta name="description" content="初中必背古诗词与文言文完全解读，依据义务教育语文课程标准（2022年版）7~9年级推荐篇目并补齐广东卷考查的教材篇目。逐字逐词点击释义、疑难字注音、整句点击看译文、全文翻译与整体理解、背诵默写、考点辨误。大字号自适应，适合网页、平板与讲台投屏。">
-<meta name="theme-color" content="#111917">
+<meta name="theme-color" content="#f4f0e6">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23b2402c'/%3E%3Ctext x='16' y='23' font-size='19' font-family='KaiTi,STKaiti,serif' fill='%23f7efe2' text-anchor='middle'%3E读%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="stylesheet" href="assets/css/curation.css">
@@ -28,24 +28,38 @@
   <nav class="chrome-tools" aria-label="阅读设置">
     <a class="tool tool-link" href="#/" id="btn-catalog">目录</a>
 
-    <div class="seg" role="group" aria-label="拼音显示">
-      <span class="seg-label" aria-hidden="true">拼音</span>
-      <button type="button" data-pinyin="off" aria-pressed="false">关</button>
-      <button type="button" data-pinyin="hard" aria-pressed="true">难字</button>
-      <button type="button" data-pinyin="all" aria-pressed="false">全部</button>
-    </div>
-
-    <div class="seg seg-type" role="group" aria-label="正文字号">
-      <span class="seg-label" aria-hidden="true">字号</span>
-      <button type="button" id="type-down" aria-label="减小字号">A−</button>
-      <output id="type-out" aria-live="polite">标准</output>
-      <button type="button" id="type-up" aria-label="增大字号">A+</button>
-    </div>
-
-    <div class="seg seg-theme" role="group" aria-label="视觉主题">
-      <button type="button" data-theme-set="moye" aria-pressed="true">墨夜</button>
-      <button type="button" data-theme-set="xuanzhi" aria-pressed="false">宣纸</button>
-    </div>
+    <details class="read-settings" id="read-settings">
+      <summary class="tool settings-trigger" aria-label="打开阅读设置">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6"/></svg>
+        阅读设置
+      </summary>
+      <div class="settings-panel">
+        <div class="setting-row">
+          <span class="setting-label">拼音</span>
+          <div class="seg" role="group" aria-label="拼音显示">
+            <button type="button" data-pinyin="off" aria-pressed="false">关</button>
+            <button type="button" data-pinyin="hard" aria-pressed="true">难字</button>
+            <button type="button" data-pinyin="all" aria-pressed="false">全部</button>
+          </div>
+        </div>
+        <div class="setting-row">
+          <span class="setting-label">字号</span>
+          <div class="seg seg-type" role="group" aria-label="正文字号">
+            <button type="button" id="type-down" aria-label="减小字号">A−</button>
+            <output id="type-out" aria-live="polite">标准</output>
+            <button type="button" id="type-up" aria-label="增大字号">A+</button>
+          </div>
+        </div>
+        <div class="setting-row setting-theme">
+          <span class="setting-label">主题</span>
+          <div class="seg seg-theme" role="group" aria-label="视觉主题">
+            <button type="button" data-theme-set="xuanzhi" aria-pressed="true"><b>宣纸</b><small>明亮教室</small></button>
+            <button type="button" data-theme-set="moye" aria-pressed="false"><b>墨夜</b><small>低光环境</small></button>
+          </div>
+        </div>
+        <p class="settings-note">设置自动保存在本机。投屏时可用 A+ 放大正文。</p>
+      </div>
+    </details>
   </nav>
 </header>
 
@@ -55,17 +69,15 @@
     <header class="catalog-hero">
       <div class="hero-copy">
         <p class="kicker"><span>广东中考读本</span><i></i>统编教材 · 2022 年课标</p>
-        <h1>初中必背<br>古诗文<span class="title-dot">。</span></h1>
+        <h1>初中必背古诗文<span class="title-dot">。</span></h1>
         <div class="hero-deck">
           <b>逐字逐词，读懂一篇。</b>
-          <p>疑难字注音，字词随点随查；整句附译文，全文有翻译与理解。每一篇独占一页，字号可以放大，适合自学、课堂和讲台投屏。</p>
+          <p>点字词看释义，点句首序号看译文。全文翻译、整体理解与默写练习都在同一页。</p>
         </div>
-        <div class="hero-rule"><span>诗</span><span>词</span><span>曲</span><span>文</span><i></i><small>按教材顺序编目</small></div>
       </div>
       <figure class="hero-art">
         <img src="assets/images/wang-ximeng.webp" alt="北宋王希孟《千里江山图》局部" width="3840" height="154" fetchpriority="high">
-        <figcaption><span>宋人山水</span><b>千里江山图</b><small>王希孟 · 北宋 · 绢本设色</small></figcaption>
-        <span class="art-stamp" aria-hidden="true">山<br>水</span>
+        <figcaption><span>宋人山水</span><b>千里江山图</b><small>王希孟 · 北宋</small></figcaption>
       </figure>
     </header>
 
