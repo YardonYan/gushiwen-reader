@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title">
+  <title id="title">关山送远</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d9d5c2"/><stop offset="1" stop-color="#b98f68"/></linearGradient>
+    <linearGradient id="plain" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a58d69"/><stop offset="1" stop-color="#5c5d4c"/></linearGradient>
+    <linearGradient id="fore" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5b5945"/><stop offset="1" stop-color="#283c33"/></linearGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".74" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="960" height="540" fill="url(#sky)"/>
+  <circle cx="226" cy="126" r="55" fill="#b55f40" opacity=".8"/>
+  <path d="M0 300 134 206l102 62 164-139 125 143 113-81 142 119 105-63 75 62v131H0Z" fill="#91866e" opacity=".72"/>
+  <path d="M0 352 170 265l115 63 165-109 145 119 128-76 146 98 91-51v131H0Z" fill="#686b58"/>
+  <path d="M0 399c164-33 315-17 458 21 170 45 335 31 502-24v144H0Z" fill="url(#plain)"/>
+  <path d="M0 475c141-38 275-35 404 3 139 41 285 35 407-7 77-27 111-28 149-24v93H0Z" fill="url(#fore)"/>
+  <path d="M595 540c-20-72 0-126 57-177 33-30 53-65 57-105 35 41 44 84 18 129-30 53-75 107-132 153Z" fill="#c1ab82" opacity=".7"/>
+  <g transform="translate(673 296)"><path d="M-82 125h170v28h-170Z" fill="#3d4739"/><path d="M-57 92h120v33h-120Z" fill="#4c5845"/><path d="M-45 19h95v73h-95Z" fill="#59644d"/><path d="M-69 19 2-27l72 46Z" fill="#303f35"/><path d="M-34 92V43h67v49" fill="#2d3c32"/><path d="M-86 125h178M-62 153v-28M62 153v-28" stroke="#3d4739" stroke-width="8"/><path d="M2-27v-31" stroke="#303f35" stroke-width="5"/><path d="M3-58 47-39H3Z" fill="#9e4f3b"/></g>
+  <g transform="translate(351 407)"><path d="M-54 24h108M-36 4h72M-20-16h40" stroke="#3a3e32" stroke-width="7"/><path d="M-35 4v39M35 4v39M-20-16v59M20-16v59" stroke="#3a3e32" stroke-width="6"/><path d="M-50-16h100l-14-15h-72Z" fill="#303a30"/></g>
+  <g transform="translate(478 419)"><path d="M-38 10c20-18 50-19 73-2l12 22h-96Z" fill="#3b3c30"/><path d="M-21 10v-31h38v31M-24-21l24-18 22 18" fill="#4b4939"/><circle cx="29" cy="-5" r="8" fill="#c6a17b"/><path d="M19 4h20l7 23H12Z" fill="#8f4c3c"/><path d="m-27 25-22 12M38 24l28 8" stroke="#3b3c30" stroke-width="5" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#ddd5bb" stroke-width="2" opacity=".42"><path d="M492 478h145M547 502h191M727 451h103M785 489h87M294 469h104"/></g>
+  <g fill="none" stroke="#40483b" stroke-width="3" stroke-linecap="round"><path d="M548 137q11-11 22 0 11-11 22 0M619 164q9-9 18 0 9-9 18 0M483 170q8-8 16 0 8-8 16 0"/></g>
+  <path d="M96 540c17-75 45-130 91-176M125 440c-24-33-32-70-26-108M152 397c35-18 66-21 98-12" fill="none" stroke="#263a30" stroke-width="11" stroke-linecap="round"/>
+  <g fill="none" stroke="#263a30" stroke-width="5" stroke-linecap="round"><path d="M101 340q-31-39-28-81M129 301q35-29 74-28M171 294q30-2 55 14"/></g>
+  <rect x="842" y="410" width="34" height="34" rx="2" fill="#a94e3c" opacity=".88"/><path d="M851 419h16M851 426h16M853 434h12" stroke="#f3e7cf" stroke-width="2"/>
+  <rect width="960" height="540" filter="url(#grain)" opacity=".065" style="mix-blend-mode:multiply"/>
+</svg>

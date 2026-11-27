@@ -26,12 +26,15 @@
   </a>
 
   <nav class="chrome-tools" aria-label="阅读设置">
-    <a class="tool tool-link" href="#/" id="btn-catalog">目录</a>
+    <a class="tool tool-link" href="#/" id="btn-catalog">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-catalog"/></svg>
+      <span>目录</span>
+    </a>
 
     <details class="read-settings" id="read-settings">
       <summary class="tool settings-trigger" aria-label="打开阅读设置">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6"/></svg>
-        阅读设置
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-settings"/></svg>
+        <span>阅读设置</span>
       </summary>
       <div class="settings-panel">
         <div class="setting-row">
@@ -57,7 +60,7 @@
             <button type="button" data-theme-set="moye" aria-pressed="false"><b>墨夜</b><small>低光环境</small></button>
           </div>
         </div>
-        <p class="settings-note">设置自动保存在本机。投屏时可用 A+ 放大正文。</p>
+        <p class="settings-note">设置自动保存在本机。投屏时可用 A+ 放大正文；目录中按 / 可快速搜索，按 Esc 收起释义。</p>
       </div>
     </details>
   </nav>
@@ -83,9 +86,11 @@
 
     <div class="searchbar" role="search">
       <label class="search-field">
-        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></svg>
-        <input type="search" id="q" placeholder="搜篇名、作者、朝代，或任意一句诗文" autocomplete="off" aria-label="搜索篇目">
-        <button type="button" id="q-clear" hidden aria-label="清空搜索">×</button>
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><use href="#i-search"/></svg>
+        <input type="search" id="q" placeholder="搜篇名、作者、朝代，或任意一句诗文" autocomplete="off" aria-label="搜索篇目" aria-keyshortcuts="/">
+        <button type="button" id="q-clear" hidden aria-label="清空搜索">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
       </label>
       <p class="search-hint" id="search-hint">试试：曹操 / 月 / 先天下之忧而忧 / 岳阳楼</p>
     </div>
@@ -136,14 +141,30 @@
 
 <footer class="foot">
   <p>篇目依据《义务教育语文课程标准（2022年版）》附录优秀诗文背诵推荐篇目（7~9年级），并补齐统编教材必背与广东卷考查过的课外诵读篇目。原文以统编教材为底本，释义与译文供教学参考。</p>
-  <p class="foot-art">画作均为公有领域作品，图片经本地压缩与裁切。来源：<a href="https://commons.wikimedia.org/wiki/File:Fan_Kuan_-_Travelers_Among_Mountains_and_Streams_-_Google_Art_Project.jpg" target="_blank" rel="noreferrer">范宽《溪山行旅图》</a>、<a href="https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg" target="_blank" rel="noreferrer">郭熙《早春图》</a>、<a href="https://commons.wikimedia.org/wiki/File:Wang_Ximeng._A_Thousand_Li_of_Rivers_and_Mountains._(Complete,_51,3x1191,5_cm)._1113._Palace_museum,_Beijing.jpg" target="_blank" rel="noreferrer">王希孟《千里江山图》</a>。</p>
+  <p class="foot-art">封面与页脚引用的古画均为公有领域作品，图片经本地压缩与裁切；各年级篇目插画为本项目绘制的 SVG 山水小景。古画来源：<a href="https://commons.wikimedia.org/wiki/File:Fan_Kuan_-_Travelers_Among_Mountains_and_Streams_-_Google_Art_Project.jpg" target="_blank" rel="noreferrer">范宽《溪山行旅图》</a>、<a href="https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg" target="_blank" rel="noreferrer">郭熙《早春图》</a>、<a href="https://commons.wikimedia.org/wiki/File:Wang_Ximeng._A_Thousand_Li_of_Rivers_and_Mountains._(Complete,_51,3x1191,5_cm)._1113._Palace_museum,_Beijing.jpg" target="_blank" rel="noreferrer">王希孟《千里江山图》</a>。</p>
   <p class="foot-sign">古诗文读本 · Yardon</p>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
   <defs>
+    <symbol id="i-catalog" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-enter" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="i-read" viewBox="0 0 24 24"><path d="M12 6.2C9.7 4.5 6.7 4 3.5 4.5v13c3.2-.5 6.2 0 8.5 1.7 2.3-1.7 5.3-2.2 8.5-1.7v-13c-3.2-.5-6.2 0-8.5 1.7Z"/><path d="M12 6.2v13"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="m14.5 5.5 4 4M4 20l4.4-1 10.1-10.1a2.8 2.8 0 0 0-4-4L4.4 15 4 20Z"/><path d="M13.5 20H21"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1.8 7.1M4 4v6h6"/></symbol>
+    <symbol id="i-reveal" viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+    <symbol id="i-hint" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M8.5 15.5C7 14.4 6 12.6 6 10.5a6 6 0 0 1 12 0c0 2.1-1 3.9-2.5 5V18h-7v-2.5Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
     <symbol id="mark-ink" viewBox="0 0 200 200">
       <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".35"/>
       <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-width="2.4" opacity=".7"/>

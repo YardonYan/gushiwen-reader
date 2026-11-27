@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title">
+  <title id="title">岳阳秋月</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#314c59"/><stop offset="1" stop-color="#9aaca5"/></linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#78948f"/><stop offset="1" stop-color="#304e50"/></linearGradient>
+    <linearGradient id="shore" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4d6a5a"/><stop offset="1" stop-color="#203b35"/></linearGradient>
+    <radialGradient id="moon"><stop stop-color="#fff3cf"/><stop offset=".7" stop-color="#e8d7a8"/><stop offset="1" stop-color="#e8d7a8" stop-opacity="0"/></radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="960" height="540" fill="url(#sky)"/>
+  <circle cx="728" cy="118" r="86" fill="url(#moon)" opacity=".92"/><circle cx="728" cy="118" r="41" fill="#f4e6be"/>
+  <path d="M0 296 128 219l92 48 151-130 111 128 122-79 148 112 112-63 96 64v141H0Z" fill="#55736f" opacity=".8"/>
+  <path d="M0 350c164-28 300-12 438 20 169 40 333 28 522-25v195H0Z" fill="url(#lake)"/>
+  <path d="M0 462c137-43 281-42 420-4 128 35 263 31 394-4 72-19 112-20 146-15v101H0Z" fill="url(#shore)"/>
+  <path d="M666 540c-17-76 6-132 64-181 33-28 53-61 58-99 39 42 49 88 22 137-31 57-82 101-144 143Z" fill="#c7c4a7" opacity=".78"/>
+  <g transform="translate(281 310)"><path d="M-105 134h222v24h-222Z" fill="#273f39"/><path d="M-72 106h154v28h-154Z" fill="#365248"/><path d="M-50 69h110v37h-110Z" fill="#426356"/><path d="M-28 29h66v40h-66Z" fill="#507163"/><path d="M-90 106 0 66l90 40M-68 69 0 22l68 47M-47 29 0-15l47 44" fill="#223b35"/><path d="M-54 106h108M-33 69h66M-12 29h24" stroke="#c4a66e" stroke-width="4"/><path d="M-88 158h176M-64 134v24M64 134v24" stroke="#273f39" stroke-width="8"/></g>
+  <g transform="translate(507 407)"><path d="M-94 27c57 20 129 22 193-2l-22 36c-58 17-113 15-161-1Z" fill="#203936"/><path d="M-61 18c41 12 89 13 132 0" fill="none" stroke="#b89862" stroke-width="4"/><path d="M2-48v72" stroke="#d0b47a" stroke-width="4"/><path d="M3-45 51-5H3Z" fill="#d9c9a3" opacity=".75"/><circle cx="-34" cy="4" r="9" fill="#cfac84"/><path d="M-46 15h25l9 25h-43Z" fill="#8f4c3c"/><path d="m44 3 73 29" stroke="#d0b47a" stroke-width="4" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#d9dfcd" stroke-width="2" opacity=".48"><path d="M553 449h112M597 472h173M705 429h133M771 488h99M343 478h128M227 425h95"/></g>
+  <g fill="none" stroke="#263f3d" stroke-width="3" stroke-linecap="round"><path d="M548 145q11-11 22 0 11-11 22 0M613 173q9-9 18 0 9-9 18 0M493 177q8-8 16 0 8-8 16 0"/></g>
+  <path d="M92 540c12-80 39-139 83-188M121 441c-25-34-34-72-28-113M148 397c34-18 65-21 96-13" fill="none" stroke="#1c3530" stroke-width="11" stroke-linecap="round"/>
+  <g fill="none" stroke="#1c3530" stroke-width="5" stroke-linecap="round"><path d="M95 339q-30-40-27-82M123 300q35-30 74-29M165 293q30-2 55 14"/></g>
+  <rect x="842" y="410" width="34" height="34" rx="2" fill="#a94e3c" opacity=".88"/><path d="M851 419h16M851 426h16M853 434h12" stroke="#f3e7cf" stroke-width="2"/>
+  <rect width="960" height="540" filter="url(#grain)" opacity=".065" style="mix-blend-mode:multiply"/>
+</svg>

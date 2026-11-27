@@ -4,6 +4,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = s => String(s ?? '').toLowerCase().replace(/\s+/g, '');
+const icon = name => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-${name}"/></svg>`;
 
 const store = {
   get(k, d) { try { const v = localStorage.getItem('duben.' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
@@ -148,7 +149,7 @@ function cardHTML(p, q, snip) {
     </span>
     <span class="card-first">${snip ? hl(snip, q) : hl(p.first, q)}</span>
     <span class="card-tags">${tags.join('')}</span>
-    <span class="work-enter" aria-hidden="true">↗</span>
+    <span class="work-enter" aria-hidden="true">${icon('enter')}</span>
   </a>`;
 }
 
@@ -323,18 +324,17 @@ function bind() {
       settings?.removeAttribute('open');
       if (state.route.name !== 'piece') return;
       $$('.gloss.open').forEach(g => {
+        const verse = g.previousElementSibling;
         g.classList.remove('open');
-        g.previousElementSibling?.querySelector('.verse-no')?.setAttribute('aria-expanded', 'false');
-        $$('.tok.active', g.previousElementSibling).forEach(t => {
-          t.classList.remove('active');
-          $('.tok-ring', t)?.remove();
-          $('.tok-bloom', t)?.remove();
-        });
+        g.setAttribute('aria-hidden', 'true');
+        verse?.querySelector('.verse-no')?.setAttribute('aria-expanded', 'false');
+        $$('.tok', verse).forEach(t => t.setAttribute('aria-expanded', 'false'));
+        $$('.tok.active', verse).forEach(t => t.classList.remove('active'));
       });
       const expand = $('.piece [data-act="expand-all"]');
       if (expand) {
         expand.setAttribute('aria-pressed', 'false');
-        expand.textContent = '展开全部句解';
+        $$('.expand-label', expand).forEach((label, i) => { label.textContent = i ? '全部句解' : '展开全部句解'; });
       }
     }
   });

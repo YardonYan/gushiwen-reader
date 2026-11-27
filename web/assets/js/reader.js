@@ -3,6 +3,7 @@ import { renderDictation } from './dictation.js';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const icon = (name, cls = '') => `<svg class="ico${cls ? ' ' + cls : ''}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-${name}"/></svg>`;
 
 function markChar(author) {
   const a = String(author || '');
@@ -10,19 +11,23 @@ function markChar(author) {
 }
 function lineText(line) { return (line.t || []).map(t => t.w).join(''); }
 
-const PAINTINGS = [
-  { src: 'assets/images/fan-kuan.webp', title: '溪山行旅图', artist: '范宽', w: 1200, h: 2400 },
-  { src: 'assets/images/guo-xi.webp', title: '早春图', artist: '郭熙', w: 1200, h: 1745 },
-  { src: 'assets/images/jiangshan-detail.webp', title: '千里江山图', artist: '王希孟', w: 1800, h: 92 }
-];
+const GRADE_ART = {
+  '七上': { key: '7a', src: 'assets/images/grade-7a.svg', title: '春山读册', scene: '春山 · 书声' },
+  '七下': { key: '7b', src: 'assets/images/grade-7b.svg', title: '江夜听雨', scene: '江夜 · 听雨' },
+  '八上': { key: '8a', src: 'assets/images/grade-8a.svg', title: '秋江行旅', scene: '秋江 · 行旅' },
+  '八下': { key: '8b', src: 'assets/images/grade-8b.svg', title: '雪涧清谈', scene: '雪涧 · 清谈' },
+  '九上': { key: '9a', src: 'assets/images/grade-9a.svg', title: '岳阳秋月', scene: '岳阳 · 秋月' },
+  '九下': { key: '9b', src: 'assets/images/grade-9b.svg', title: '关山送远', scene: '关山 · 送远' }
+};
 function paintingFor(data, meta) {
-  return PAINTINGS[(Array.from(data.title || '').length + (data.lines?.length || 0) + (meta.no || 0)) % PAINTINGS.length];
+  return GRADE_ART[data.grade || meta?.grade] || GRADE_ART['七上'];
 }
 
 function tokenHTML(tok, li, ti) {
   if (tok.punct) return `<span class="tok" data-punct><span class="py"></span><span class="zi">${esc(tok.w)}</span></span>`;
   const hard = tok.hard ? ' data-hard' : '';
-  return `<button type="button" class="tok" data-tok="${li}:${ti}"${hard} aria-label="${esc(tok.w)}，点击查看释义">
+  const pronunciation = tok.p ? `，读音 ${tok.p}` : '';
+  return `<button type="button" class="tok" data-tok="${li}:${ti}"${hard} aria-label="${esc(tok.w)}${esc(pronunciation)}，点击查看释义" aria-expanded="false" aria-controls="gloss-${li}" title="点击查看释义">
     <span class="py">${esc(tok.p || '')}</span><span class="zi">${esc(tok.w)}</span>
   </button>`;
 }
@@ -47,10 +52,10 @@ function verseHTML(line, li) {
   const key = line.key ? ' is-key' : '';
   const exam = line.exam ? `<span class="verse-exam">${esc(line.exam)}</span>` : '';
   return `<div class="verse${key}" data-line="${li}"${line.key ? ' data-key' : ''}>
-    <button type="button" class="verse-no" data-sent="${li}" aria-expanded="false" aria-label="第${li + 1}句，点击查看整句释义与译文">${String(li + 1).padStart(2, '0')}</button>
+    <button type="button" class="verse-no" data-sent="${li}" aria-expanded="false" aria-controls="gloss-${li}" aria-label="第${li + 1}句，点击查看整句释义与译文" title="查看整句释义与译文">${String(li + 1).padStart(2, '0')}</button>
     ${tokensHTML(line, li)}${exam}
   </div>
-  <div class="gloss" data-gloss="${li}"${line.key ? ' data-key' : ''}><div class="gloss-in"></div></div>`;
+  <div class="gloss" id="gloss-${li}" data-gloss="${li}"${line.key ? ' data-key' : ''} aria-hidden="true"><div class="gloss-in" aria-live="polite"></div></div>`;
 }
 
 function wordGloss(tok) {
@@ -62,6 +67,7 @@ function wordGloss(tok) {
       <span class="gloss-word">${esc(tok.w)}</span>
       ${tok.p ? `<span class="gloss-py">${esc(tok.p)}</span>` : ''}
       <span class="gloss-kind">${single ? '字' : '词'}</span>
+      <button type="button" class="gloss-close" data-close-gloss aria-label="收起释义">${icon('close')}<span>收起</span></button>
     </div>
     <p class="gloss-g">${esc(tok.g || '')}</p>${ch}${d}
   </div>`;
@@ -71,7 +77,7 @@ function sentGloss(line) {
   const note = line.note ? `<div class="gloss-note"><b>句解</b>${esc(line.note)}</div>` : '';
   const exam = line.exam ? `<p class="gloss-exam">考点角度：${esc(line.exam)}</p>` : '';
   return `<div class="gloss-card">
-    <div class="gloss-head"><span class="gloss-kind">整句</span>${line.key ? '<span class="gloss-kind">名句</span>' : ''}</div>
+    <div class="gloss-head"><span class="gloss-kind">整句</span>${line.key ? '<span class="gloss-kind">名句</span>' : ''}<button type="button" class="gloss-close" data-close-gloss aria-label="收起整句解读">${icon('close')}<span>收起</span></button></div>
     <p class="gloss-sent">${esc(lineText(line))}</p>
     <p class="gloss-tr"><b>译文</b>${esc(line.tr || '')}</p>${note}${exam}
   </div>`;
@@ -121,7 +127,7 @@ export function renderPiece(host, data, meta, ctx) {
     data.syllabus === '课标' ? `课标推荐${meta.no ? ' No.' + String(meta.no).padStart(2, '0') : ''}` : '教材增补'
   ].filter(Boolean).join('<i></i>');
 
-  host.innerHTML = `<article class="piece" data-genre="${esc(genre)}" data-id="${esc(data.id)}">
+  host.innerHTML = `<article class="piece" data-genre="${esc(genre)}" data-grade="${painting.key}" data-id="${esc(data.id)}">
     <div class="piece-head">
       <div class="piece-heading">
         <h1 class="piece-title">${esc(data.title)}</h1>
@@ -131,19 +137,19 @@ export function renderPiece(host, data, meta, ctx) {
         </div>
       </div>
       <figure class="piece-art">
-        <img src="${painting.src}" alt="意境配图：北宋${esc(painting.artist)}《${esc(painting.title)}》" width="${painting.w}" height="${painting.h}">
-        <figcaption><span>${esc(painting.title)}</span><small>${esc(painting.artist)} · 北宋</small></figcaption>
+        <img src="${painting.src}" alt="${esc(data.grade || meta.grade)}统一插画：${esc(painting.title)}" width="${painting.w || 960}" height="${painting.h || 540}" loading="eager">
+        <figcaption><span>${esc(painting.title)}</span><small>${esc(data.grade || meta.grade)} · ${esc(painting.scene)}</small></figcaption>
       </figure>
     </div>
 
     <div class="piece-toolbar">
       <div class="mode-switch" role="group" aria-label="阅读模式">
-        <button type="button" data-mode="read" aria-pressed="true">解读</button>
-        <button type="button" data-mode="dict" aria-pressed="false">默写</button>
+        <button type="button" data-mode="read" aria-pressed="true">${icon('read')}<span>解读</span></button>
+        <button type="button" data-mode="dict" aria-pressed="false">${icon('pen')}<span>默写</span></button>
       </div>
-      <button type="button" class="tbtn" data-act="only-key" aria-pressed="false">只看名句</button>
-      <button type="button" class="tbtn" data-act="expand-all" aria-pressed="false">展开全部句解</button>
-      <span class="toolbar-note">点字词看释义 · 点句首序号看整句译文</span>
+      <button type="button" class="tbtn" data-act="only-key" aria-pressed="false">${icon('star')}<span class="label-full">只看名句</span><span class="label-short">名句</span></button>
+      <button type="button" class="tbtn" data-act="expand-all" aria-pressed="false">${icon('layers')}<span class="label-full expand-label">展开全部句解</span><span class="label-short expand-label">全部句解</span></button>
+      <span class="toolbar-note">点字词看释义 · 点序号看译文 · Esc 收起</span>
     </div>
 
     <div class="verse-block" data-block="read">${(data.lines || []).map(verseHTML).join('')}</div>
@@ -153,7 +159,7 @@ export function renderPiece(host, data, meta, ctx) {
       <summary>
         <span class="author-mark" aria-hidden="true">${esc(markChar(data.author))}</span>
         <span class="author-summary"><b>作者与本事</b><small>${esc(data.author)} · ${esc(data.dynasty)}</small></span>
-        <span class="author-toggle" aria-hidden="true">展开</span>
+        <span class="author-toggle" aria-hidden="true"><span class="author-open">展开</span><span class="author-close">收起</span>${icon('chevron')}</span>
       </summary>
       <div class="author-body">
         <div><h2>作者</h2><p>${esc(data.authorIntro || '')}</p></div>
@@ -176,9 +182,9 @@ export function renderPiece(host, data, meta, ctx) {
     ${examPanel(data)}
 
     <nav class="piece-nav" aria-label="篇目导航">
-      ${ctx.prev ? `<a class="nav-card" href="#/p/${esc(ctx.prev.id)}"><small>上一篇</small><b>${esc(ctx.prev.title)}</b></a>` : '<span></span>'}
-      <a class="nav-back" href="#/">目录</a>
-      ${ctx.next ? `<a class="nav-card next" href="#/p/${esc(ctx.next.id)}"><small>下一篇</small><b>${esc(ctx.next.title)}</b></a>` : '<span></span>'}
+      ${ctx.prev ? `<a class="nav-card" href="#/p/${esc(ctx.prev.id)}">${icon('prev')}<span><small>上一篇</small><b>${esc(ctx.prev.title)}</b></span></a>` : '<span></span>'}
+      <a class="nav-back" href="#/">${icon('catalog')}<span>目录</span></a>
+      ${ctx.next ? `<a class="nav-card next" href="#/p/${esc(ctx.next.id)}"><span><small>下一篇</small><b>${esc(ctx.next.title)}</b></span>${icon('next')}</a>` : '<span></span>'}
     </nav>
   </article>`;
 
@@ -186,24 +192,26 @@ export function renderPiece(host, data, meta, ctx) {
   const readBlock = $('[data-block="read"]', piece);
   const dictBlock = $('[data-block="dict"]', piece);
   const expandButton = $('[data-act="expand-all"]', piece);
+  const onlyKeyButton = $('[data-act="only-key"]', piece);
   let dictMounted = false;
 
   /* --- 释义展开 --- */
   function resetExpandButton() {
     if (!expandButton) return;
     expandButton.setAttribute('aria-pressed', 'false');
-    expandButton.textContent = '展开全部句解';
+    $$('.expand-label', expandButton).forEach((label, i) => { label.textContent = i ? '全部句解' : '展开全部句解'; });
   }
-  function closeGloss(li) {
+  function closeGloss(li, restoreFocus = false) {
     const g = $(`[data-gloss="${li}"]`, readBlock);
     if (!g) return;
+    const verse = g.previousElementSibling;
+    const activeTok = $('.tok.active', verse);
     g.classList.remove('open');
+    g.setAttribute('aria-hidden', 'true');
     $(`[data-sent="${li}"]`, readBlock)?.setAttribute('aria-expanded', 'false');
-    $$(`.tok.active`, g.previousElementSibling).forEach(t => {
-      t.classList.remove('active');
-      $('.tok-ring', t)?.remove();
-      $('.tok-bloom', t)?.remove();
-    });
+    $$('.tok', verse).forEach(t => t.setAttribute('aria-expanded', 'false'));
+    $$('.tok.active', verse).forEach(t => t.classList.remove('active'));
+    if (restoreFocus) (activeTok || $('.verse-no', verse))?.focus();
   }
   function closeAll() {
     $$('.gloss.open', readBlock).forEach(g => closeGloss(Number(g.dataset.gloss)));
@@ -220,15 +228,21 @@ export function renderPiece(host, data, meta, ctx) {
     inner.innerHTML = html.body;
     inner.dataset.sig = html.sig;
     g.classList.add('open');
+    g.setAttribute('aria-hidden', 'false');
+    $$('.tok', verse).forEach(t => t.setAttribute('aria-expanded', 'false'));
     $(`[data-sent="${li}"]`, readBlock)?.setAttribute('aria-expanded', 'true');
     if (focusTok) {
       focusTok.classList.add('active');
-      focusTok.insertAdjacentHTML('beforeend',
-        '<svg class="tok-ring" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="47" ry="45" pathLength="100"/></svg><span class="tok-bloom" aria-hidden="true"></span>');
+      focusTok.setAttribute('aria-expanded', 'true');
     }
   }
 
   readBlock.addEventListener('click', e => {
+    const close = e.target.closest('[data-close-gloss]');
+    if (close) {
+      closeGloss(Number(close.closest('.gloss').dataset.gloss), true);
+      return;
+    }
     const tok = e.target.closest('.tok:not([data-punct])');
     if (tok) {
       const [li, ti] = tok.dataset.tok.split(':').map(Number);
@@ -252,6 +266,8 @@ export function renderPiece(host, data, meta, ctx) {
       $$('[data-mode]', piece).forEach(b => b.setAttribute('aria-pressed', String(b === mode)));
       readBlock.hidden = m !== 'read';
       dictBlock.hidden = m !== 'dict';
+      onlyKeyButton.disabled = m !== 'read';
+      expandButton.disabled = m !== 'read';
       if (m === 'dict' && !dictMounted) {
         renderDictation(dictBlock, data, { toast: ctx.toast });
         dictMounted = true;
@@ -281,11 +297,12 @@ export function renderPiece(host, data, meta, ctx) {
           $('.gloss-in', g).innerHTML = sentGloss(ln);
           $('.gloss-in', g).dataset.sig = 's' + li;
           g.classList.add('open');
+          g.setAttribute('aria-hidden', 'false');
           $(`[data-sent="${li}"]`, readBlock)?.setAttribute('aria-expanded', 'true');
         });
       }
       b.setAttribute('aria-pressed', String(on));
-      b.textContent = on ? '收起全部句解' : '展开全部句解';
+      $$('.expand-label', b).forEach((label, i) => { label.textContent = on ? (i ? '收起句解' : '收起全部句解') : (i ? '全部句解' : '展开全部句解'); });
       ctx.toast(on ? '已展开全部句解' : '已收起全部释义');
       return;
     }

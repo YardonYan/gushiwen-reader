@@ -2,6 +2,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const chars = s => Array.from(String(s ?? ''));
+const icon = name => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-${name}"/></svg>`;
 
 export function renderDictation(host, data, ctx) {
   const lines = data.lines || [];
@@ -48,7 +49,7 @@ export function renderDictation(host, data, ctx) {
       </span>`;
     }).join('');
     return `<div class="dic-line-wrap">
-      <div class="dic-line-head"><small>第 ${li + 1} 句</small><button type="button" data-hint="${li}">提示一字</button></div>
+      <div class="dic-line-head"><small>第 ${li + 1} 句</small><button type="button" data-hint="${li}">${icon('hint')}<span>提示一字</span></button></div>
       <div class="dic-line" data-dline="${li}">${body}</div>
       ${line.tr ? `<p class="dic-hint">译文提示：${esc(line.tr)}</p>` : ''}
     </div>`;
@@ -63,8 +64,8 @@ export function renderDictation(host, data, ctx) {
       </div>
       <div class="dic-progress" role="progressbar" aria-label="默写进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
       <span class="dic-count"><b>0</b> / <span data-total>0</span> 字</span>
-      <button type="button" class="tbtn" data-dact="reset">重置</button>
-      <button type="button" class="tbtn" data-dact="reveal">显示全文</button>
+      <button type="button" class="tbtn" data-dact="reset">${icon('reset')}<span>重置</span></button>
+      <button type="button" class="tbtn" data-dact="reveal">${icon('reveal')}<span>显示全文</span></button>
     </div>
     <div class="dic-lines">${lines.map(lineHTML).join('')}</div>
     <div class="dic-done" hidden>

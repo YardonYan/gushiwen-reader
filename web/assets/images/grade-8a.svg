@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title">
+  <title id="title">秋江行旅</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ead9b8"/><stop offset="1" stop-color="#cf9f70"/></linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b99a72"/><stop offset="1" stop-color="#6e7567"/></linearGradient>
+    <linearGradient id="bank" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8a674b"/><stop offset="1" stop-color="#443f35"/></linearGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".74" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="960" height="540" fill="url(#sky)"/>
+  <circle cx="245" cy="132" r="58" fill="#bd6747" opacity=".82"/>
+  <path d="M0 291 134 210l91 51 151-131 109 131 130-83 145 116 105-63 95 67v142H0Z" fill="#a98b6b" opacity=".7"/>
+  <path d="M0 338 153 251l115 62 146-102 131 109 142-74 151 99 122-62v157H0Z" fill="#776f5c"/>
+  <path d="M0 388c154-35 301-22 439 17 164 47 327 30 521-19v154H0Z" fill="url(#river)"/>
+  <path d="M0 458c133-41 255-42 380-10 112 29 233 26 353-7 97-27 160-30 227-22v121H0Z" fill="url(#bank)"/>
+  <path d="M580 540c-1-69 34-119 96-158 41-26 64-60 70-104 42 47 52 98 18 149-39 58-101 88-184 113Z" fill="#c4ad84" opacity=".72"/>
+  <g transform="translate(405 386)"><path d="M-113 35c65 25 157 28 232-2l-27 43c-71 20-139 18-203-2Z" fill="#3e3b31"/><path d="M-72 24c49 15 105 17 158 0" fill="none" stroke="#d0ad73" stroke-width="4"/><path d="M4-54v85" stroke="#4b4437" stroke-width="5"/><path d="M5-51 61-8H5Z" fill="#e2cfaa" opacity=".78"/><circle cx="-40" cy="6" r="10" fill="#d7b18b"/><path d="M-54 19h30l11 28h-51Z" fill="#6c493c"/><path d="m44 4 88 35" stroke="#4b4437" stroke-width="4" stroke-linecap="round"/></g>
+  <g fill="none" stroke="#ede0c2" stroke-width="2" opacity=".5"><path d="M501 454h134M549 478h189M708 437h127M771 492h99M280 470h116"/></g>
+  <g fill="none" stroke="#4d4b3d" stroke-width="4" stroke-linecap="round"><path d="M681 123q14-13 28 0 14-13 28 0M756 151q11-10 22 0 11-10 22 0M623 157q10-9 20 0 10-9 20 0"/></g>
+  <path d="M96 540c18-74 47-127 94-165M127 439c-24-34-31-71-22-108M153 398c36-19 65-23 98-15" fill="none" stroke="#4b4436" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#a65c3f"><ellipse cx="122" cy="325" rx="43" ry="12" transform="rotate(28 122 325)"/><ellipse cx="184" cy="367" rx="49" ry="12" transform="rotate(-18 184 367)"/><ellipse cx="221" cy="320" rx="38" ry="11" transform="rotate(36 221 320)"/></g>
+  <rect x="842" y="410" width="34" height="34" rx="2" fill="#a94e3c" opacity=".88"/><path d="M851 419h16M851 426h16M853 434h12" stroke="#f3e7cf" stroke-width="2"/>
+  <rect width="960" height="540" filter="url(#grain)" opacity=".06" style="mix-blend-mode:multiply"/>
+</svg>
