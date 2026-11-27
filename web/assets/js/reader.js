@@ -12,12 +12,42 @@ function markChar(author) {
 function lineText(line) { return (line.t || []).map(t => t.w).join(''); }
 
 const GRADE_ART = {
-  '七上': { key: '7a', src: 'assets/images/grade-7a.svg', title: '春山读册', scene: '春山 · 书声' },
-  '七下': { key: '7b', src: 'assets/images/grade-7b.svg', title: '江夜听雨', scene: '江夜 · 听雨' },
-  '八上': { key: '8a', src: 'assets/images/grade-8a.svg', title: '秋江行旅', scene: '秋江 · 行旅' },
-  '八下': { key: '8b', src: 'assets/images/grade-8b.svg', title: '雪涧清谈', scene: '雪涧 · 清谈' },
-  '九上': { key: '9a', src: 'assets/images/grade-9a.svg', title: '岳阳秋月', scene: '岳阳 · 秋月' },
-  '九下': { key: '9b', src: 'assets/images/grade-9b.svg', title: '关山送远', scene: '关山 · 送远' }
+  '七上': {
+    key: '7a', src: 'assets/images/paintings/guo-xi-early-spring.webp',
+    title: '郭熙《早春图》', artist: '北宋 · 郭熙',
+    scene: '春山雾气浮动，舟桥、树木与行人渐次苏醒，呼应七上篇目的春日生机与开阔气象。',
+    source: 'https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg'
+  },
+  '七下': {
+    key: '7b', src: 'assets/images/paintings/dong-yuan-xiao-xiang.webp',
+    title: '董源《潇湘图》', artist: '五代 · 董源',
+    scene: '江南洲渚、渔舟与村落铺展在平远江面，清幽水色呼应七下诗文中的乡思与春夜。',
+    source: 'https://commons.wikimedia.org/wiki/File:Xiao_and_Xiang_rivers.jpg'
+  },
+  '八上': {
+    key: '8a', src: 'assets/images/paintings/fan-kuan-travelers.webp',
+    title: '范宽《溪山行旅图》', artist: '北宋 · 范宽',
+    scene: '飞瀑穿岩而下，山道上的驮队与行旅隐入林木，呼应八上诗文的壮阔气象与行旅之思。',
+    source: 'https://commons.wikimedia.org/wiki/File:Travelers_Among_Mountains_and_Streams.png'
+  },
+  '八下': {
+    key: '8b', src: 'assets/images/paintings/xia-gui-snow-stream.webp',
+    title: '夏圭《雪溪放牧图》', artist: '南宋 · 夏圭',
+    scene: '雪后溪岸，牧人驱牛归去，清冷留白呼应八下诗文的含蓄与深情。',
+    source: 'https://commons.wikimedia.org/wiki/File:%E5%A4%8F%E5%9C%AD%E9%9B%AA%E6%BA%AA%E6%94%BE%E7%89%A7%E5%9B%BE%E9%A1%B5.png'
+  },
+  '九上': {
+    key: '9a', src: 'assets/images/paintings/xia-yong-yueyang-tower.webp',
+    title: '夏永《岳阳楼图》', artist: '元 · 夏永',
+    scene: '岳阳楼临水而立，重檐飞阁纤毫毕现，直接呼应《岳阳楼记》的忧乐情怀。',
+    source: 'https://commons.wikimedia.org/wiki/File:XiaYong-YueYangLou.jpg'
+  },
+  '九下': {
+    key: '9b', src: 'assets/images/paintings/guan-tong-mountain-pass.webp',
+    title: '关仝《关山行旅图》', artist: '五代 · 关仝',
+    scene: '关隘山道上车马行旅，峭壁与村舍相映，呼应九下送别、行旅与家国情怀。',
+    source: 'https://commons.wikimedia.org/wiki/File:Guan_Tong_-_Travelers_in_a_Mountain_Pass.jpg'
+  }
 };
 function paintingFor(data, meta) {
   return GRADE_ART[data.grade || meta?.grade] || GRADE_ART['七上'];
@@ -137,8 +167,13 @@ export function renderPiece(host, data, meta, ctx) {
         </div>
       </div>
       <figure class="piece-art">
-        <img src="${painting.src}" alt="${esc(data.grade || meta.grade)}统一插画：${esc(painting.title)}" width="${painting.w || 960}" height="${painting.h || 540}" loading="eager">
-        <figcaption><span>${esc(painting.title)}</span><small>${esc(data.grade || meta.grade)} · ${esc(painting.scene)}</small></figcaption>
+        <img src="${painting.src}" alt="${esc(painting.title)}，${esc(painting.artist)}。${esc(painting.scene)}" width="1600" height="600" loading="eager">
+        <figcaption>
+          <span class="art-name">${esc(painting.title)}</span>
+          <a class="art-source" href="${painting.source}" target="_blank" rel="noopener noreferrer" aria-label="查看${esc(painting.title)}的公有领域来源">画作来源</a>
+          <small class="art-by">${esc(painting.artist)}</small>
+          <span class="art-scene">${esc(painting.scene)}</span>
+        </figcaption>
       </figure>
     </div>
 

@@ -50,7 +50,7 @@
 - **逐字逐词释义**：点击原文中的字或词，打开注音、字义、详解和易错提醒；选中状态使用柔和底色与下划线，不用红圈遮挡文字。
 - **整句解读**：点击句首序号，查看整句释义、译文和赏析。
 - **全文翻译与整体理解**：帮助学生从字词进入篇章，也方便教师备课。
-- **年级统一插画**：七年级上、下册，八年级上、下册，九年级上、下册各使用一幅原创 SVG 山水小景，统一矿物色、纸纹与构图语言，同时区分六册课本。
+- **年级真实画作**：七年级上、下册，八年级上、下册，九年级上、下册各配一幅公有领域山水画，按季节、行旅、江雪、岳阳楼与送别意境匹配；图下标注作者、作品名和画面说明。
 - **背诵默写**：支持隐藏提示、逐空输入、错字标记、显示答案、重置和完成印章。
 - **原文搜索**：可按篇名、作者、朝代或任意一句诗文搜索。
 - **组合筛选**：按年级、体裁、课标推荐、教材增补和广东卷考查筛选。
@@ -75,27 +75,29 @@
 - 正文统一使用本地规范宋体栈：`Songti SC`、`STSong`、`Noto Serif CJK SC`、`Source Han Serif SC`、`SimSun`，并以 600 字重增强投影辨识度；不请求外部字体服务。
 - 目录编号放大为 36—40px 徽章；句首序号统一为两位数，保持 44×44px 可点击区域。
 
-### 六册年级插画
+### 六册年级配画
 
-六幅插画均为本项目绘制的 960×540 SVG，采用一致的青绿矿物色、层叠山形、纸纹与朱砂印章，但分别对应不同季节和阅读情境。
+六幅画作均选自公有领域，不使用卡通、动漫或 AI 生成图片。阅读页会显示作品名、作者和一句意境说明，并可跳转到 Wikimedia Commons 查看原图与授权信息。
+
+![六册真实山水画与页面标注总览](docs/images/paintings-overview.webp)
 
 | 七年级上 | 七年级下 | 八年级上 |
 | :---: | :---: | :---: |
-| <img src="web/assets/images/grade-7a.svg" alt="七年级上：春山读册" width="100%"> | <img src="web/assets/images/grade-7b.svg" alt="七年级下：江夜听雨" width="100%"> | <img src="web/assets/images/grade-8a.svg" alt="八年级上：秋江行旅" width="100%"> |
-| **春山读册** | **江夜听雨** | **秋江行旅** |
+| <img src="web/assets/images/paintings/guo-xi-early-spring.webp" alt="郭熙《早春图》局部" width="100%"> | <img src="web/assets/images/paintings/dong-yuan-xiao-xiang.webp" alt="董源《潇湘图》局部" width="100%"> | <img src="web/assets/images/paintings/fan-kuan-travelers.webp" alt="范宽《溪山行旅图》局部" width="100%"> |
+| [郭熙《早春图》](https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg)<br>北宋 · 春山复苏 | [董源《潇湘图》](https://commons.wikimedia.org/wiki/File:Xiao_and_Xiang_rivers.jpg)<br>五代 · 江南平远 | [范宽《溪山行旅图》](https://commons.wikimedia.org/wiki/File:Travelers_Among_Mountains_and_Streams.png)<br>北宋 · 巨峰行旅 |
 
 | 八年级下 | 九年级上 | 九年级下 |
 | :---: | :---: | :---: |
-| <img src="web/assets/images/grade-8b.svg" alt="八年级下：雪涧清谈" width="100%"> | <img src="web/assets/images/grade-9a.svg" alt="九年级上：岳阳秋月" width="100%"> | <img src="web/assets/images/grade-9b.svg" alt="九年级下：关山送远" width="100%"> |
-| **雪涧清谈** | **岳阳秋月** | **关山送远** |
+| <img src="web/assets/images/paintings/xia-gui-snow-stream.webp" alt="夏圭《雪溪放牧图》局部" width="100%"> | <img src="web/assets/images/paintings/xia-yong-yueyang-tower.webp" alt="夏永《岳阳楼图》局部" width="100%"> | <img src="web/assets/images/paintings/guan-tong-mountain-pass.webp" alt="关仝《关山行旅图》局部" width="100%"> |
+| [夏圭《雪溪放牧图》](https://commons.wikimedia.org/wiki/File:%E5%A4%8F%E5%9C%AD%E9%9B%AA%E6%BA%AA%E6%94%BE%E7%89%A7%E5%9B%BE%E9%A1%B5.png)<br>南宋 · 江雪归牧 | [夏永《岳阳楼图》](https://commons.wikimedia.org/wiki/File:XiaYong-YueYangLou.jpg)<br>元 · 岳阳楼阁 | [关仝《关山行旅图》](https://commons.wikimedia.org/wiki/File:Guan_Tong_-_Travelers_in_a_Mountain_Pass.jpg)<br>五代 · 关山送远 |
 
-封面与页脚引用的范宽《溪山行旅图》、郭熙《早春图》和王希孟《千里江山图》均为公有领域作品，图片已本地压缩；年级插画为本项目原创 SVG，不依赖外部图片服务。
+封面与页脚另引范宽《溪山行旅图》、郭熙《早春图》和王希孟《千里江山图》。所有画作均为公有领域作品，图片已本地压缩与裁切，不依赖外部图片服务。
 
 ## 屏幕适配
 
 | 场景 | 常见尺寸 | 布局重点 |
 | :--- | :--- | :--- |
-| 手机 | 320—430px | 单行顶栏、设置收进弹出面板、正文减少左右留白，并保留年级插画 |
+| 手机 | 320—430px | 单行顶栏、设置收进弹出面板、正文减少左右留白，并保留年级配画 |
 | 平板 | 768—834px | 保留篇头山水与完整工具栏，正文保持大字号 |
 | 桌面与投屏 | 1024—1440px | 正文优先进入首屏，1366×768 等短屏自动收紧间距 |
 
@@ -148,7 +150,8 @@ PORT=8080 npm start
 │  │  │  ├─ dictation.js
 │  │  │  └─ motif.js
 │  │  └─ images/
-│  │     ├─ grade-7a.svg … grade-9b.svg
+│  │     ├─ paintings/
+│  │     │  └─ 六幅本地 WebP 画作
 │  │     └─ 封面与页脚古画
 │  └─ data/
 │     ├─ catalog.json
@@ -191,6 +194,10 @@ PORT=8080 npm start
 
 画作来源：
 
-- [范宽《溪山行旅图》](https://commons.wikimedia.org/wiki/File:Fan_Kuan_-_Travelers_Among_Mountains_and_Streams_-_Google_Art_Project.jpg)
 - [郭熙《早春图》](https://commons.wikimedia.org/wiki/File:Guo_Xi_-_Early_Spring_(large).jpg)
+- [董源《潇湘图》](https://commons.wikimedia.org/wiki/File:Xiao_and_Xiang_rivers.jpg)
+- [范宽《溪山行旅图》](https://commons.wikimedia.org/wiki/File:Travelers_Among_Mountains_and_Streams.png)
+- [夏圭《雪溪放牧图》](https://commons.wikimedia.org/wiki/File:%E5%A4%8F%E5%9C%AD%E9%9B%AA%E6%BA%AA%E6%94%BE%E7%89%A7%E5%9B%BE%E9%A1%B5.png)
+- [夏永《岳阳楼图》](https://commons.wikimedia.org/wiki/File:XiaYong-YueYangLou.jpg)
+- [关仝《关山行旅图》](https://commons.wikimedia.org/wiki/File:Guan_Tong_-_Travelers_in_a_Mountain_Pass.jpg)
 - [王希孟《千里江山图》](https://commons.wikimedia.org/wiki/File:Wang_Ximeng._A_Thousand_Li_of_Rivers_and_Mountains._(Complete,_51,3x1191,5_cm)._1113._Palace_museum,_Beijing.jpg)
